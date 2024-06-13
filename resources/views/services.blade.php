@@ -35,17 +35,21 @@
         <section class="service-section-2 fix section-padding">
             <div class="container">
                 <div class="row">
+                    @foreach ($services as $service)
                     <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                         <div class="service-items-2">
                             <div class="service-image">
-                                <img src="{{ asset("img/service/05.jpg") }}" alt="service-img">
+                                <img src="{{ asset("img/service/".$service->thumbnail) }}" alt="service-img">
                             </div>
                             <div class="service-content">
                                 <h3>
-                                    <a href="service-details.html">Feasibility & Concept Studies</a>
+                                    <a href="{{ route("service",$service->slug) }}">{{ $service->title }}</a>
                                 </h3>
+                                <p>
+                                    {{ $service->shortDesc }}
+                                </p>
 
-                                <a href="news-details.html" class="theme-btn-2 padding-style mt-4">
+                                <a href="{{ route("service",$service->slug) }}" class="theme-btn-2 padding-style mt-4">
                                     Read More
                                     <span class="shape-img">
                                         <img src="{{ asset("img/arrow-shape.png") }}" alt="shape-img">
@@ -54,26 +58,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                        <div class="service-items-2">
-                            <div class="service-image">
-                                <img src="{{ asset("img/service/05.jpg") }}" alt="service-img">
-                            </div>
-                            <div class="service-content">
-                                <h3>
-                                    <a href="service-details.html">Process Engineering</a>
-                                </h3>
-
-                                <a href="news-details.html" class="theme-btn-2 padding-style mt-4">
-                                    Read More
-                                    <span class="shape-img">
-                                        <img src="{{ asset("img/arrow-shape.png") }}" alt="shape-img">
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

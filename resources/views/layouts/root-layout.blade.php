@@ -50,6 +50,7 @@
 
         <x-back-to-start/>
 
+        <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
         <!--<< All JS Plugins >>-->
         <script src="{{ asset("js/jquery-3.7.1.min.js") }}"></script>

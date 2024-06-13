@@ -153,7 +153,7 @@
       <div class="footer-bottom">
         <div class="container">
           <div class="footer-bottom-wrapper">
-            <p>© All Copyright 2024 by <a href="index.html">EaglesThemes</a></p>
+            <p>© All Copyright 2024 by <a href="index.html">eics</a></p>
             <ul>
               <li><a href="contact.html">Terms & Condition</a></li>
               <li><a href="contact.html"> Privacy Policy</a></li>

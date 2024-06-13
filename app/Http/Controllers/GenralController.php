@@ -2,44 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
+use App\Models\ProjectType;
 use Illuminate\Http\Request;
 
 class GenralController extends Controller
 {
-    function home() {
-        return view('welcome');
+    public function home() {
+        $services = Service::where("featured",true)->orderBy("updated_at","desc")->get();
+        return view('welcome',["services"=>$services]);
     }
 
-    function about(){
+    public function about(){
         return view("about.index");
     }
 
-    function keypersons(){
+    public function keypersons(){
         return view("about.keypersons");
     }
 
-    function qualityPolicy(){
+    public function qualityPolicy(){
         return view("about.qulityPolicy");
     }
 
 
-    function services(){
-        return view("services");
+    public function services(){
+        // get all the services 
+        $services = Service::orderBy("updated_at","desc")->get();
+        return view("services",["services"=>$services]);
     }
 
-    function contact(){
+
+    public function service($slug){
+        $service = Service::where("slug",$slug)->first();
+        return view("service",["service"=>$service]);
+        
+    }
+
+    public function contact(){
         return "welcome to contact";
     }
 
-    function ongoingProjects(){
-        return view("projects.ongoing");
+    public function projects($type){
+        $sectionWithProjects = ProjectType::where("slug",$type)->firstOrFail()->sections()->with('projects');
+        return $sectionWithProjects;
     }
 
-    function commissionedPrjects(){
-        return view("projects.commissioned");
-    }
-
-    function contactus(){
+    public function contactus(){
         return view("contact");
     }
 }

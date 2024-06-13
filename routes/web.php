@@ -15,7 +15,7 @@ use App\Http\Controllers\GenralController;
 */
 
 
-Route::controller(GenralController::class)->group(function(){
+Route::controller(GenralController::class)->middleware("shareHeaderData")->group(function(){
     Route::get('/', 'home')->name("home");
     
     // about routes 
@@ -25,14 +25,15 @@ Route::controller(GenralController::class)->group(function(){
 
     // services route
     Route::get("/our-services",'services')->name("services");
+    Route::get("/service/{service}","service")->name("service");
 
     // contact routes
     Route::get("/contact",'contact')->name("contact");
 
     // Projects routes
 
-    Route::get("/projects/ongoing-projects",'ongoingProjects')->name("project.ongoing");
-    Route::get("/projects/commissioned-projects",'commissionedPrjects')->name("project.commissioned");
+    Route::get("/projects/{type}","projects")->name("projects");
+
 
     // contact routes
 
