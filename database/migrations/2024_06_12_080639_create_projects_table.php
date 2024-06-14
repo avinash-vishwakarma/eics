@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->boolean("featured")->default(false);
             $table->string("slug");
             $table->foreignId("section_id")->references('id')->on('project_sections')->onDelete('cascade');
             $table->string("thumbnail");

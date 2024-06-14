@@ -39,7 +39,7 @@
                                                         <a href="{{ route("about") }}" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn">
                                                             About Group
                                                         </a>
-                                                        <a href="{{ route("project.commissioned") }}" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn-2 white-border">
+                                                        <a href="" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn-2 white-border">
                                                             View Projects
                                                             <span class="shape-img">
                                                                 <img src="{{ asset("img/arrow-shape.png") }}" alt="shape-img">

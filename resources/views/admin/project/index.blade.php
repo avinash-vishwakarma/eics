@@ -53,8 +53,19 @@
                     <div class="col-lg-4">
                         <div class="card my-4">
                             <div class="card-body">
-                                {{ $project->name }}
-                            </div>
+                                <div class="gc__img">
+                                  <img src="{{ asset("img/project/".$project->thumbnail) }}" alt="img" class="w-100 radius-xl">
+                                </div>
+                                <h4 class="my-2">{{ $project->title }}</h4>
+                                <p><strong>Location : </strong>{{ $project->location }}</p>
+                                <div class="d-flex justify-content-between">
+                                  <a href="{{ route("admin.project.show" ,$project->id) }}" class="btn btn-info btn-squared ">More Details ..</a>
+                                  <div class="d-flex ">
+                                    <a href="{{ route("admin.project.edit",$project->id) }}" class="btn btn-icon btn-success btn-squared "><iconify-icon style="font-size: 25px;" icon="material-symbols:update"></iconify-icon></a>
+                                    <a href="" class="btn btn-icon btn-danger btn-squared  mx-2"><iconify-icon style="font-size: 25px;" icon="mdi:trash"></iconify-icon></a>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
                     </div>
                 @endforeach

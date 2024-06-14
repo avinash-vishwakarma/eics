@@ -64,7 +64,7 @@
                             <a href="#"> projects </a>
                             <ul class="submenu">
                               @foreach ($headerTypes as $type)
-                              <li><a href="{{ route('project.ongoing') }}">{{ $type->name }}</a></li>
+                              <li><a href="{{ route('projects',$type->slug) }}">{{ $type->name }}</a></li>
                               @endforeach
                             </ul>
                           </li>

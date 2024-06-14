@@ -78,7 +78,8 @@ class ProjectController extends Controller
             "client_name"=>"nullable | string",
             "client_url"=>"nullable | url",
             "location"=>"nullable | string",
-            "full_description"=>"required"
+            "full_description"=>"required",
+            "featured"=>"required"
         ]);
         $project = new Project();
         $section = ProjectSection::findOrFail($request->section_id);
@@ -100,9 +101,10 @@ class ProjectController extends Controller
         $project->location = $request->location;
         $project->full_description = $request->full_description;
         $project->slug = Str::slug($request->title);
-
+        if($request->featured == "true"){
+            $project->featured = true;
+        }
         $section->projects()->save($project);
-
         return response()->json([
             "status"=>"success",
             "redirect"=>route("admin.project.create")
@@ -114,11 +116,13 @@ class ProjectController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http
      */
     public function show($id)
     {
-        //
+        $project = Project::with(["section"])->findOrFail($id);
+        $project->type = $project->type()->first();
+        return view("admin.project.show",["project"=>$project]);
     }
 
     /**
@@ -129,7 +133,7 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

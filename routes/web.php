@@ -38,6 +38,7 @@ Route::controller(GenralController::class)->middleware("shareHeaderData")->group
     // contact routes
 
     Route::get("/contact-us","contactus")->name("contactus");
+    Route::post("/contact-us","SendMessage")->name("contact.sendMessage");
 
 });
 

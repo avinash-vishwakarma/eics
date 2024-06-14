@@ -44,11 +44,32 @@ class GenralController extends Controller
     }
 
     public function projects($type){
-        $sectionWithProjects = ProjectType::where("slug",$type)->firstOrFail()->sections()->with('projects');
+        $sectionWithProjects = ProjectType::where("slug",$type)->firstOrFail()->sections()->with('projects')->get();
         return $sectionWithProjects;
     }
 
     public function contactus(){
         return view("contact");
+    }
+
+    public function SendMessage(Request $request){
+        $request->validate([
+            "name"=>"required | string | max:255",
+            "email"=>"required | email",
+            "company_name"=>"required | string | max:255",
+            "company_number"=>"required | digits:10",
+            "message"=>"required"
+        ]);
+
+        ContactMessage::create([
+            "client_name"=>$request->name,
+            "company_name"=>$request->company_name,
+            "contact_number"=>$request->company_number,
+            "email"=>$request->email,
+            "message"=>$request->message
+        ]);
+        
+
+        return redirect()->back()->with("success","Message Submitted Successfully");
     }
 }

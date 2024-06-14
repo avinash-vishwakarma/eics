@@ -44,8 +44,7 @@
                                 <div class="content">
                                     <h3>Phone & Fax</h3>
                                     <ul>
-                                        <li>Mobile : <a href="tel:+1979056780">+197 -90 - 56 - 780</a></li>
-                                        <li>Fax : <a href="tel:+442081234567">+44-208-1234567</a></li>
+                                        <li>Mobile : <a href="tel:+919994173687">+91-9994173687</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,8 +57,7 @@
                                 <div class="content">
                                     <h3>Mail Address</h3>
                                     <ul>
-                                        <li><a href="#0">Info.company@gmail.com</a></li>
-                                        <li><a href="#0">Info.company@yahoo.com</a></li>
+                                        <li><a href="#0">mkt-info@eicsgroup.com</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -72,8 +70,10 @@
                                 <div class="content">
                                     <h3>Our Location</h3>
                                     <ul>
-                                        <li>Mobile : 85 Ketch Harbour</li>
-                                        <li>RoadBensalem, PA 19020</li>
+                                        <li>
+                                            B-202, Rama City Center, Rama Valley, Bodri,
+                                            Bilaspur-495220, Chhattisgarh, INDIA.
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -111,41 +111,37 @@
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
                         <div class="contact-form-items">
                             <h2>Leave A Message</h2>
-                            <form action="https://eaglestheme.com/html/industril/contact.php" id="contact-form" method="POST">
+                            <form action="{{ route("contact.sendMessage") }}" id="contact-form" method="POST">
+
+                                @csrf
+
                                 <div class="row g-4">
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="text" name="name" id="name" placeholder="Name" class="active">
+                                            <input type="text" name="name" id="name" placeholder="Your Name *" class="active">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-clt">
-                                            <input type="text" name="email" id="email2" placeholder="Email">
+                                            <input type="text" name="email" id="email2" placeholder="Contact Email *">
                                         </div>
                                     </div>
+
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <div class="nice-select" tabindex="0">
-                                                <span class="current">
-                                                Subject
-                                                </span>
-                                                <ul class="list">
-                                                    <li data-value="1" class="option selected focus">
-                                                        Service
-                                                    </li>
-                                                    <li data-value="1" class="option">
-                                                        Pricing
-                                                    </li>
-                                                    <li data-value="1" class="option">
-                                                        Support
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            <input type="text" name="company_name" id="company_name" placeholder="Company Name *">
                                         </div>
                                     </div>
+
                                     <div class="col-lg-12">
                                         <div class="form-clt">
-                                            <textarea name="message" id="message" placeholder="Message"></textarea>
+                                            <input type="text" name="company_number" id="company_name" placeholder="Contact Number *">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="form-clt">
+                                            <textarea name="message" id="message" placeholder="Message *"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-7">

@@ -8,7 +8,7 @@
               >
                 <div class="offcanvas__logo">
                   <a href="index.html">
-                    <img src="assets/img/logo/logo.svg" alt="logo-img" />
+                    <img src="{{ asset("img/logo/logo.svg") }}" alt="logo-img" />
                   </a>
                 </div>
                 <div class="offcanvas__close">
@@ -18,9 +18,8 @@
                 </div>
               </div>
               <p class="text d-none d-lg-block">
-                This involves interactions between a business and its customers.
-                It's about meeting customers' needs and resolving their problems.
-                Effective customer service is crucial.
+                EICS – the consultancy organization founded by Mr. S. N. Swamy in 1997 for 
+                providing consulting engineering services for Iron & Steel plants in India.
               </p>
               <div class="mobile-menu fix mb-5"></div>
               <div class="offcanvas__contact">
@@ -32,7 +31,7 @@
                     </div>
                     <div class="offcanvas__contact-text">
                       <a target="_blank" href="#"
-                        >Main Street, Melbourne, Australia</a
+                        > Rama Valley, Bodri, Bilaspur, Chhattisgarh - 495220, India</a
                       >
                     </div>
                   </li>
@@ -43,7 +42,7 @@
                     <div class="offcanvas__contact-text">
                       <a href="tel:+013-003-003-9993"
                         ><span class="mailto:info@enofik.com"
-                          >eaglesthemes@gmail.com</span
+                          >mkt-info@eicsgroup.com</span
                         ></a
                       >
                     </div>
@@ -61,13 +60,13 @@
                       <i class="fas fa-phone-alt"></i>
                     </div>
                     <div class="offcanvas__contact-text">
-                      <a href="tel:+11002345909">+11002345909</a>
+                      <a href="tel:+919994173687">+91-9994173687</a>
                     </div>
                   </li>
                 </ul>
                 <div class="header-button mt-5">
-                  <a href="contact.html" class="theme-btn text-center">
-                    Get A Quote
+                  <a href="{{ route("contactus") }}" class="theme-btn text-center">
+                    Contact Us
                   </a>
                 </div>
                 <div class="social-icon d-flex align-items-center">
