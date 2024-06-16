@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\ProjectTypeController;
 use App\Http\Controllers\Admin\ServicesPageCotroller;
+use App\Http\Controllers\Admin\ProjectImageController;
 use App\Http\Controllers\Admin\ProjectSectionController;
 
 
@@ -27,6 +28,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware("isAdmin")->resource("/project",ProjectController::class);
+    Route::controller(ProjectImageController::class)->name("project.img.")->prefix("/project/img/{project}")->middleware("isAdmin")->group(function(){
+        Route::get("/add-update","addUpdate")->name("addUpdate");
+        Route::patch("/add-update","uploadImg")->name("uploadImg");
+    });
     Route::middleware("isAdmin")->prefix("/project")->name("project")->resource("/type",ProjectTypeController::class);
     Route::middleware("isAdmin")->prefix("/project")->name("project")->resource("/section",ProjectSectionController::class);
 

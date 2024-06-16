@@ -69,7 +69,6 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'title'=>"required",
             "shortDesc"=>"required",
             "section_id"=>"required",
@@ -84,13 +83,13 @@ class ProjectController extends Controller
         $project = new Project();
         $section = ProjectSection::findOrFail($request->section_id);
 
-        if($request->hasFile('thumbnail')){
-            $file = $request->file("thumbnail");
-            $destinationPath = "img/project/";
-            $fileName = time()."_".$file->getClientOriginalName();
-            $file->move(public_path($destinationPath),$fileName);
-            $project->thumbnail = $fileName;
-        }
+        // if($request->hasFile('thumbnail')){
+        //     $file = $request->file("thumbnail");
+        //     $destinationPath = "img/project/";
+        //     $fileName = time()."_".$file->getClientOriginalName();
+        //     $file->move(public_path($destinationPath),$fileName);
+        //     $project->thumbnail = $fileName;
+        // }
 
         $project->title = $request->title;
         $project->description = $request->shortDesc;
@@ -105,10 +104,7 @@ class ProjectController extends Controller
             $project->featured = true;
         }
         $section->projects()->save($project);
-        return response()->json([
-            "status"=>"success",
-            "redirect"=>route("admin.project.create")
-        ]);
+        return redirect()->route("admin.project.img.addUpdate",$project->id)->with("success","project created add now add images");
 
     }
 
@@ -131,9 +127,26 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request , $id)
     {
-        
+        $types = ProjectType::all();
+        $selectedType = null;
+        $selectedSection = null;
+        $sections=null;
+        if($request->has("type")){
+            $selectedType = ProjectType::findOrFail($request->get("type"));
+            $sections = $selectedType->sections()->get();
+        }
+        if($selectedType && $request->has("section")){
+            $selectedSection = ProjectSection::findOrFail($request->get("section"));
+        }
+
+        $project = Project::with("section")->findOrFail($id);
+        $project->type = $project->type->first();
+        // get all sections for selected type
+
+        // return $project;
+        return view("admin.project.edit",["types"=>$types,"selectedType"=>$selectedType,"sections"=>$sections,"selectedSection"=>$selectedSection,"project"=>$project]);
     }
 
     /**

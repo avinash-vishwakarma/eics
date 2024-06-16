@@ -18,4 +18,12 @@ class Project extends Model
         return $this->section()->first()->type();
     }
 
+    public function getImagesAttribute($value){
+        return json_decode($value);
+    }
+
+    public function setImagesAttribute($value){
+        $this->attributes["images"] = json_encode($value);
+    }
+
 }

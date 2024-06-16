@@ -5,8 +5,14 @@
               <div class="col-lg-12">
                 <div class="breadcrumb-main">
                   <h4 class="text-capitalize breadcrumb-title">Title : {{ $project->title }}</h4>
-                  <div class="breadcrumb-action justify-content-center flex-wrap">
-                    <a href="{{ route("admin.project.edit",$project->id) }}" class="btn btn-info btn-rounded"> <iconify-icon icon="bx:edit"></iconify-icon> Edit</a>
+                  <div class="d-flex">
+                    <div class="breadcrumb-action justify-content-center flex-wrap mx-4">
+                        <a href="{{ route("admin.project.img.addUpdate",$project->id) }}" class="btn btn-success btn-default btn-squared btn-transparent-success "> <iconify-icon icon="hugeicons:image-upload"></iconify-icon> Update Images</a>
+                      </div>
+    
+                      <div class="breadcrumb-action justify-content-center flex-wrap">
+                        <a href="{{ route("admin.project.edit",$project->id) }}" class="btn btn-info btn-default btn-squared btn-transparent-info "> <iconify-icon icon="bx:edit"></iconify-icon> Edit</a>
+                      </div>
                   </div>
                 </div>
   

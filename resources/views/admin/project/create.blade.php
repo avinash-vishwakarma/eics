@@ -1,8 +1,9 @@
-featured<x-layouts.admin-includes-layout>
+<x-layouts.admin-includes-layout>
     <main class="main-content">
         <div class="container-fluid">
             <div class="row mt-4">
-                <div class="col-lg-6">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
                     <div class="card card-Vertical card-default card-md mb-4">
                       <div class="card-header">
                         <h6>Add new Project</h6>
@@ -105,30 +106,7 @@ featured<x-layouts.admin-includes-layout>
                                             </div>
                                         </div>
                                 </div>
-                              
-                                <div class="dm-upload mb-25">
-                                  <div
-                                    class="dm-upload-avatar media-import mb-25 dropzone-lg-s"
-                                  >
-                                    <label for="thumbnail" class="color-light mt-0 fs-15 d-flex flex-column align-items-center">
-  
-                                      <iconify-icon icon="material-symbols:upload-sharp" style="font-size:25px; "></iconify-icon>
-                                      <span id="selected_file_name">Upload Thumbnail</span>
-                                    </label>
-                                  </div>
-                                  <div class="avatar-up">
-                                    <input
-                                      id="thumbnail"
-                                      type="file"
-                                      name="thumbnail"
-                                      class="upload-avatar-input"
-                                      accept="image/*"
-                                    />
-                                  </div>
-                              </div>
-  
-
-
+                            
                                 
                                 @if ($selectedSection)
                                     <input type="hidden" name="section_id" value="{{ $selectedSection->id }}">
@@ -252,22 +230,8 @@ featured<x-layouts.admin-includes-layout>
                       </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card card-Vertical card-default card-md mb-4">
-                        <div class="card-header">
-                          <h6>Thumbnail Preview</h6>
-                        </div>
-                        <div class="card-body">
-                            <img src="" class="w-50" alt="" id="thumbnailPreview">
-                        </div>
-                    </div>
-                </div>
+                <div class="col-lg-2"></div>
             </div>
           </div>
       </main>
-
-      <x-slot name="jsSlot">
-        <script src="{{ asset("admin/js/addService.js") }}"></script>
-      </x-slot>
-
 </x-layouts.admin-includes-layout>

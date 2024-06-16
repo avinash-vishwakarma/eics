@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean("featured")->default(false);
             $table->string("slug");
             $table->foreignId("section_id")->references('id')->on('project_sections')->onDelete('cascade');
-            $table->string("thumbnail");
+            $table->json("images")->nullable();
             $table->string("title");
             $table->text("description");
             $table->string("completion_date")->nullable();
