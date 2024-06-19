@@ -47,36 +47,49 @@ class GenralController extends Controller
         return "welcome to contact";
     }
 
+    // public function projects(Request $request , $type){
+    //     $currentPage = $request->get("page") ?? 1;
+    //     $perpage = 6;
+    //     $paginateSection = $request->get("section") ?? null;
+    //     // get type data
+    //     $type = ProjectType::where("slug",$type)->firstOrFail();
+    //     // get all section 
+    //     $sections = $type->sections()->get();
+    //     // with first 10 projects with only title location and images
+    //     foreach($sections as $section){
+    //         // get the total number of projects
+    //         $projectsCount = $section->projects()->count();
+    //         $offset;
+    //         if($paginateSection == $section->slug){
+    //             // show the next projects 
+    //             $offset = ((int)$currentPage - 1) * $perpage;
+    //         }else{ 
+    //             $offset = 0; 
+    //         }
+
+    //         $paginationProjects = new LengthAwarePaginator($section->projects()->skip($offset)->take($perpage)->get(),
+    //         $projectsCount,
+    //         $perpage,
+    //         $currentPage,
+    //         ["path"=>route("projects",[$type->slug,"section"=>$section->slug])]    
+    //     );
+
+    //         $section->projects = $paginationProjects;
+    //     }
+
+    //     return view("projects.index",["sections"=>$sections,"type"=>$type]);
+    // }
+
     public function projects(Request $request , $type){
-        $currentPage = $request->get("page") ?? 1;
-        $perpage = 8;
-        $paginateSection = $request->get("section") ?? null;
-        // get type data
+
         $type = ProjectType::where("slug",$type)->firstOrFail();
-        // get all section 
-        $sections = $type->sections()->get();
-        // with first 10 projects with only title location and images
-        foreach($sections as $section){
-            // get the total number of projects
-            $projectsCount = $section->projects()->count();
-            $offset;
-            if($paginateSection == $section->slug){
-                // show the next projects 
-                $offset = ((int)$currentPage - 1) * $perpage;
-            }else{ 
-                $offset = 0; 
-            }
-
-            $paginationProjects = new LengthAwarePaginator($section->projects()->skip($offset)->take($perpage)->get(),
-            $projectsCount,
-            $perpage,
-            $currentPage,
-            ["path"=>route("projects",[$type->slug,"section"=>$section->slug])]    
-        );
-
-            $section->projects = $paginationProjects;
+        foreach ($type->sections as $section) {
+            $section->projects = $section->projects()->orderBy("updated_at","desc")->limit(6)->get();
         }
+
+        return $type;
     }
+
 
     public function project($slug){
         $project = Project::where("slug",$slug)->firstOrFail();

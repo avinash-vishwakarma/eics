@@ -41,7 +41,7 @@
         <section class="project-section-2 fix section-padding">
             <div class="container">
                 @foreach ($sections as $section)
-                <div class="project-wrapper pb-0 pt-0">
+                <div class="project-wrapper pb-0 pt-0 my-4">
 
                     <h4 class="mb-4">
                         {{ $section->name }}
@@ -49,9 +49,9 @@
 
                     <div class="row g-4">
                         @foreach ($section->projects as $project)
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                            <div class="project-image style-2 active bg-cover" style="background-image: url('{{ asset("img/project/".$project->images->thumbnail) }}');">
-                                <a href="project-details.html" class="post-box">
+                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp " data-wow-delay=".5s">
+                            <div class="project-image style-2 active bg-cover" style="background-image: url('{{ asset("img/project/".$project->images?->thumbnail) }}');">
+                                <a href="{{ route("project",$project->slug) }}" class="post-box">
                                     <i class="fa-solid fa-location-arrow"></i>
                                 </a>
                                 <div class="project-content">
