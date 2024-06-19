@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="gc__img">
-                            <img src="{{ asset("img/project/".$project->thumbnail) }}" alt="img" class="w-75 radius-xl">
+                            <img src="{{ asset("img/project/".$project->images?->main) }}" alt="img" class="w-75 radius-xl">
                         </div>
                     </div>
                 </div>

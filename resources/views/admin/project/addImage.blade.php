@@ -10,6 +10,26 @@
         @method("PATCH")
       </form>
 
+
+      <div class="modal-info-success modal fade" id="alertModal" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-info" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="modal-info-body d-flex">
+                <div class="modal-info-icon success">
+                </div>
+                <div class="modal-info-text">
+                    <p id="modal-text"></p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Ok</button>
+            </div>
+          </div>
+        </div>
+        </div>
+
       <div class="modal fade bd-example-modal-lg" id="crop-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content modal-bg-white ">
@@ -36,8 +56,8 @@
 
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4">
+            <div class="row my-4">
+                <div class="col-lg-6">
                   <div class="card">
                     <div class="card-body">
                       <div class="custom-file">
@@ -47,7 +67,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="card">
                     <div class="card-body">
                       <div class="custom-file">
@@ -58,7 +78,41 @@
                   </div>
                 </div>
             </div>
-          </div>
+
+            <div class="row">
+
+              @if ($images && isset($images->thumbnail))
+              <div class="col-lg-6">
+                <div class="card">
+
+                  <div class="card-header">
+                    <h6>Thumbnail</h6>
+                  </div>
+
+                  <div class="card-body">
+                    <img src="{{ asset("img/project/".$images->thumbnail) }}" alt="">
+                  </div>
+                </div>
+              </div>
+              @endif
+
+              @if ($images && isset($images->main))
+              <div class="col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h6>Main Image</h6>
+                  </div>
+                  <div class="card-body">
+                    <img src="{{ asset("img/project/".$images->main) }}" alt="" class="w-100">
+                  </div>
+                </div>
+              </div>
+              @endif
+
+
+            </div>
+
+        </div>
       </main>
 
 

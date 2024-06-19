@@ -33,6 +33,7 @@ Route::controller(GenralController::class)->middleware("shareHeaderData")->group
     // Projects routes
 
     Route::get("/projects/{type}","projects")->name("projects");
+    Route::get("/project/{slug}","project")->name("project");
 
 
     // contact routes

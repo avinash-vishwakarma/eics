@@ -82,15 +82,6 @@ class ProjectController extends Controller
         ]);
         $project = new Project();
         $section = ProjectSection::findOrFail($request->section_id);
-
-        // if($request->hasFile('thumbnail')){
-        //     $file = $request->file("thumbnail");
-        //     $destinationPath = "img/project/";
-        //     $fileName = time()."_".$file->getClientOriginalName();
-        //     $file->move(public_path($destinationPath),$fileName);
-        //     $project->thumbnail = $fileName;
-        // }
-
         $project->title = $request->title;
         $project->description = $request->shortDesc;
         $project->completion_date = $request->end_date;
@@ -129,23 +120,29 @@ class ProjectController extends Controller
      */
     public function edit(Request $request , $id)
     {
+        // redirec the user to the same route 
+
+
+
         $types = ProjectType::all();
         $selectedType = null;
         $selectedSection = null;
         $sections=null;
+        $project = Project::with("section")->findOrFail($id);
+        $project->type = $project->type->first();
+        
         if($request->has("type")){
             $selectedType = ProjectType::findOrFail($request->get("type"));
             $sections = $selectedType->sections()->get();
-        }
-        if($selectedType && $request->has("section")){
-            $selectedSection = ProjectSection::findOrFail($request->get("section"));
+            if($request->has("section")){
+                $selectedSection = $selectedType->sections()->findOrFail($request->get("section"));
+            }
+        }else{
+            $selectedType = $project->type;
+            $sections =  ProjectType::findOrFail($selectedType->id)->sections()->get();
+            $selectedSection = $project->section;
         }
 
-        $project = Project::with("section")->findOrFail($id);
-        $project->type = $project->type->first();
-        // get all sections for selected type
-
-        // return $project;
         return view("admin.project.edit",["types"=>$types,"selectedType"=>$selectedType,"sections"=>$sections,"selectedSection"=>$selectedSection,"project"=>$project]);
     }
 
@@ -158,7 +155,18 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // request validate 
+        $request->validate([
+            "featured"=>"required",
+            "section_id"=>"required | string",
+            "title"=>"rquired | string | max:255",
+            "shortDesc"=>"requird | string",
+            "start_date"=>"nullable | string",
+            "end_date"=>"nullable | string",
+            "client_name"=>"nullable | string",
+            "client_url"=>"nullable | string",
+            "location"=>"nullable | string"
+        ]);
     }
 
     /**

@@ -5,6 +5,7 @@ const uploadImageForm = document.getElementById("uploadImageForm");
 let cropper;
 
 let $modal = $("#crop-modal");
+let $messageModal = $("#alertModal");
 let aspectRatio;
 let type;
 let width;
@@ -22,10 +23,10 @@ updateThumbnailInput.addEventListener("change", (e) => {
 mainImageInput.addEventListener("change", (e) => {
     $modal.modal("show");
     $("#crop_preview").attr("src", URL.createObjectURL(e.target.files[0]));
-    aspectRatio = 16 / 9;
+    aspectRatio = 2 / 1;
     type = "main";
-    width = 1280;
-    height = 720;
+    width = 600;
+    height = 300;
 });
 
 $modal
@@ -45,6 +46,10 @@ $modal
         width = null;
         height = null;
     });
+
+$messageModal.on("hidden.bs.modal", function () {
+    location.reload();
+});
 
 $("#cropBtn").on("click", () => {
     var canvas;
@@ -68,7 +73,8 @@ $("#cropBtn").on("click", () => {
                 processData: false,
                 contentType: false,
                 success: function (response) {
-                    console.log(response);
+                    $("#modal-text").text(response.success);
+                    $messageModal.modal("show");
                 },
                 error: function (response) {
                     console.log("Upload error");

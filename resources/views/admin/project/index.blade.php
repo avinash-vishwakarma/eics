@@ -54,7 +54,7 @@
                         <div class="card my-4">
                             <div class="card-body">
                                 <div class="gc__img">
-                                  <img src="{{ asset("img/project/".$project->thumbnail) }}" alt="img" class="w-100 radius-xl">
+                                  <img src="{{ asset("img/project/".$project->images?->thumbnail) }}" alt="Thumbnail Not Present" class="w-100 radius-xl">
                                 </div>
                                 <h4 class="my-2">{{ $project->title }}</h4>
                                 <p><strong>Location : </strong>{{ $project->location }}</p>

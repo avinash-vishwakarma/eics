@@ -10,7 +10,7 @@ class ProjectImageController extends Controller
 {
     public function addUpdate(Project $project){
 
-        return view("admin.project.addImage",["project_id"=>$project->id]);
+        return view("admin.project.addImage",["project_id"=>$project->id,"images"=>$project->images]);
     }
 
     public function uploadImg(Request $request,Project $project){

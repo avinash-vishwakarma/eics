@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('type_id')->references('id')->on('project_types')->onDelete('cascade');
             $table->string("name");
+            $table->string("slug");
             $table->timestamps();
         });
     }

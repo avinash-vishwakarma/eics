@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\Service;
 use App\Models\ProjectType;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class GenralController extends Controller
 {
     public function home() {
         $services = Service::where("featured",true)->orderBy("updated_at","desc")->get();
-        return view('welcome',["services"=>$services]);
+        // get all the featured projects 
+        $projects = Project::where("featured",true)->orderBy("updated_at","desc")->get();
+        return view('welcome',["services"=>$services,"projects"=>$projects]);
     }
 
     public function about(){
@@ -43,10 +47,42 @@ class GenralController extends Controller
         return "welcome to contact";
     }
 
-    public function projects($type){
-        $sectionWithProjects = ProjectType::where("slug",$type)->firstOrFail()->sections()->with('projects')->get();
-        return $sectionWithProjects;
+    public function projects(Request $request , $type){
+        $currentPage = $request->get("page") ?? 1;
+        $perpage = 8;
+        $paginateSection = $request->get("section") ?? null;
+        // get type data
+        $type = ProjectType::where("slug",$type)->firstOrFail();
+        // get all section 
+        $sections = $type->sections()->get();
+        // with first 10 projects with only title location and images
+        foreach($sections as $section){
+            // get the total number of projects
+            $projectsCount = $section->projects()->count();
+            $offset;
+            if($paginateSection == $section->slug){
+                // show the next projects 
+                $offset = ((int)$currentPage - 1) * $perpage;
+            }else{ 
+                $offset = 0; 
+            }
+
+            $paginationProjects = new LengthAwarePaginator($section->projects()->skip($offset)->take($perpage)->get(),
+            $projectsCount,
+            $perpage,
+            $currentPage,
+            ["path"=>route("projects",[$type->slug,"section"=>$section->slug])]    
+        );
+
+            $section->projects = $paginationProjects;
+        }
     }
+
+    public function project($slug){
+        $project = Project::where("slug",$slug)->firstOrFail();
+        return view("project-details",["project"=>$project]);
+    }
+
 
     public function contactus(){
         return view("contact");
