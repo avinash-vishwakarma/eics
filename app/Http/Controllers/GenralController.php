@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Service;
 use App\Models\ProjectType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class GenralController extends Controller
@@ -81,13 +82,20 @@ class GenralController extends Controller
     // }
 
     public function projects(Request $request , $type){
+        $type =  ProjectType::with(["sections.projects"=>function($query){
+            $query->orderBy("updated_at","desc")->limit(6);
+        }])->where("slug",$type)->first();
+        return view("projects.index",["type"=>$type]);
+    }
 
-        $type = ProjectType::where("slug",$type)->firstOrFail();
-        foreach ($type->sections as $section) {
-            $section->projects = $section->projects()->orderBy("updated_at","desc")->limit(6)->get();
-        }
+    public function allSectionProjects($type , $section){
 
-        return $type;
+        $type = ProjectType::where("slug",$type)->first();
+        $section = $type->sections()->where("slug",$section)->first();
+        $projects = $section->projects()->paginate(9);
+
+
+        return view("projects.show",["type"=>$type,"section"=>$section,"projects"=>$projects]);
     }
 
 

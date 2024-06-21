@@ -31,6 +31,12 @@
                             <li>
                                 {{ $type->name }}
                             </li>
+                            <li>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </li>
+                            <li>
+                                {{ $section->name }}
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -40,7 +46,6 @@
         <!-- Project Section Start -->
         <section class="project-section-2 fix section-padding">
             <div class="container">
-                @foreach ($type->sections as $section)
                 <div class="project-wrapper pb-0 pt-0 my-4">
 
                     <h4 class="mb-4">
@@ -48,7 +53,7 @@
                     </h4>
 
                     <div class="row g-4">
-                        @foreach ($section->projects as $project)
+                        @foreach ($projects as $project)
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp " data-wow-delay=".5s">
                             <div class="project-image style-2 active bg-cover" style="background-image: url('{{ asset("img/project/".$project->images?->thumbnail) }}');">
                                 <a href="{{ route("project",$project->slug) }}" class="post-box">
@@ -65,11 +70,10 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="page-nav-wrap pt-5 text-center wow fadeInUp mb-4" data-wow-delay=".3s">
-                        <a href="{{ route("sectionprojects",[$type->slug,$section->slug]) }}" class="theme-btn-2">Show More Projects</a>
+                    <div class="page-nav-wrap pt-5 text-center wow fadeInUp" data-wow-delay=".3s">
+                        {{  $projects->render("projects.paginatelinks")  }}
                     </div>
                 </div>
-                @endforeach
             </div>
         </section>
 
