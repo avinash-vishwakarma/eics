@@ -12,8 +12,13 @@
               </div>
             </div>
             <div class="row">
+
+                <div class="col-lg-12 mb-4">
+                    <x-admin.form.alert/>
+                </div>
+
                 @foreach ($types as $type)
-                <div class="col-lg-3">
+                <div class="col-lg-3 mb-4">
                     <div class="card">
                         <div class="card-body">
                             <p>

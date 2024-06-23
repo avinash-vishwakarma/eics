@@ -1,3 +1,4 @@
+@props(['jsSlot'=>null])
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -74,6 +75,8 @@
         <script src="{{ asset("js/wow.min.js") }}"></script>
         <!--<< Main.js >>-->
         <script src="{{ asset("js/main.js") }}"></script>
-
+        @if ($jsSlot)
+        {!! $jsSlot !!}
+        @endif
     </body>
 </html>

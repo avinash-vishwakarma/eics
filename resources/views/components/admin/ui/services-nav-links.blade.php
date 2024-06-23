@@ -10,5 +10,11 @@
       <li class="">
         <a href="{{ route("admin.services.show") }}">Show All Services</a>
       </li>
+      <li class="">
+        <a href="{{ route("admin.services.featured") }}">All Featured Services</a>
+      </li>
+      <li class="">
+        <a href="{{ route("admin.services.create") }}">Create New Service</a>
+      </li>
     </ul>
   </li>

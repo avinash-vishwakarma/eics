@@ -43,7 +43,9 @@ class ProjectTypeController extends Controller
             'name'=>"required"
         ]);
         
-        // *** check if the slug already exists
+        if(ProjectType::where("slug",Str::slug($request->name))->first()){
+            return redirect()->back()->with("error","Title already Present");
+        }
 
         $type = ProjectType::create([
             "name"=>$request->name,
@@ -51,7 +53,7 @@ class ProjectTypeController extends Controller
         ]);
 
         if($type){
-            return  redirect()->route("admin.project.type.index");
+            return  redirect()->route("admin.project.type.index")->with("success","Project Type Created Successfully");
         }
     }
 

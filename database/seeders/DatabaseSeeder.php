@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminTableSeeder::class,
-            ServiceTableSeeder::class,
-            ProjectTypeTableSeeder::class,
-            ProjectSectionTableSeeder::class,
-            ProjectTableSeeder::class
+            // ServiceTableSeeder::class,
+            // ProjectTypeTableSeeder::class,
+            // ProjectSectionTableSeeder::class,
+            // ProjectTableSeeder::class
         ]);
     }
 }

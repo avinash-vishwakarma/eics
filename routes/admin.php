@@ -25,6 +25,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post("/store","store")->name("store");
         Route::get("/edit/{service}","edit")->name("edit");
         Route::post("/update/{service}","update")->name("update");
+        Route::get("/{service}/img","uploadImage")->name("upload.img");
+        Route::patch("/{service}/img","saveImage")->name("save.img");
+        Route::delete("/{service}","destroy")->name("destroy");
+        Route::get("/featured","featured")->name("featured");
     });
 
     Route::middleware("isAdmin")->resource("/project",ProjectController::class);

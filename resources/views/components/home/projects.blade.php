@@ -1,6 +1,6 @@
 @props(['projects'])
 <!-- Project Section Start -->
-                <section class="project-section fix section-padding pb-0 mt-30">
+                <section class="project-section fix section-padding pb-0 mt-30" style="margin-bottom: 30px;">
                     <div class="container">
                         <div class="line-area">
                             <span></span>
@@ -27,8 +27,8 @@
                                                 </p>
                                             </div>
                                             <div class="col-md-4 text-end ps-0 wow fadeInUp" data-wow-delay=".5s">
-                                                <a href="project.html" class="theme-btn-2">
-                                                    View All Projects
+                                                <a href="{{ route("projects.featured") }}" class="theme-btn-2">
+                                                    All Featured Projects
                                                     <span class="shape-img">
                                                         <img src="{{asset("img/arrow-shape.png")}}" alt="shape-img">
                                                     </span>

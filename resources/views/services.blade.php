@@ -45,9 +45,6 @@
                                 <h3>
                                     <a href="{{ route("service",$service->slug) }}">{{ $service->title }}</a>
                                 </h3>
-                                <p>
-                                    {{ $service->shortDesc }}
-                                </p>
 
                                 <a href="{{ route("service",$service->slug) }}" class="theme-btn-2 padding-style mt-4">
                                     Read More

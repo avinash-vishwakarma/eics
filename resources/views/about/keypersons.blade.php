@@ -7,7 +7,7 @@
     <x-includes.header/>
 
             <!--<< Breadcrumb Section Start >>-->
-            <div class="breadcrumb-wrapper bg-cover" style="background-image: url('{{ asset("img/hero/breadcrumb-bg.jpg") }}');">
+            <div class="breadcrumb-wrapper bg-cover" style="background-image: url('{{ asset("img/about/keypersons.jpg") }}');">
                 <div class="mask-shape">
                     <img src="{{ asset("img/mask-shape.png") }}" alt="shape-img">
                 </div>

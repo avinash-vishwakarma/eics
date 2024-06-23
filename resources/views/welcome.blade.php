@@ -10,11 +10,13 @@
 
     <x-home.about-section/>
     <x-home.services-section :services="$services"/>
-
+    <x-home.functional-setup/>
     <x-home.projects :projects="$projects"/>
-
+    <x-home.brand-images/>
     <x-includes.footer/>
 
-    
+    <x-slot name="jsSlot">
+        <script src="{{ asset("js/home.js") }}"></script>
+    </x-slot>
 
 </x-layouts.root-layout>

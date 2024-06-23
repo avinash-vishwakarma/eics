@@ -104,6 +104,11 @@ class GenralController extends Controller
         return view("project-details",["project"=>$project]);
     }
 
+    public function featured(){
+        $projects = Project::where("featured",true)->OrderBy("updated_at","desc")->paginate(9);
+        return view("projects.featured",["projects"=>$projects]);
+    }
+
 
     public function contactus(){
         return view("contact");

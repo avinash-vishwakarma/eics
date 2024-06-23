@@ -63,9 +63,13 @@
                           <li>
                             <a href="#"> projects </a>
                             <ul class="submenu">
+                              
+                              <li><a href="{{ route("projects.featured") }}">Featured Projects</a></li>
+
                               @foreach ($headerTypes as $type)
                               <li><a href="{{ route('projects',$type->slug) }}">{{ $type->name }}</a></li>
                               @endforeach
+
                             </ul>
                           </li>
                           <li>

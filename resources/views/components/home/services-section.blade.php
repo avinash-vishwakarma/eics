@@ -20,7 +20,7 @@
                             </a>
                         </h3>
                         <p>
-                            {{ $service->shortDesc }}
+                            {{  Str::limit($service->shortDesc,100) }}
                         </p>
                     </div>
                 </div>

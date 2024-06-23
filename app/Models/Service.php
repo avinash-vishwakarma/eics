@@ -13,6 +13,7 @@ class Service extends Model
         "title",
         "shortDesc",
         "thumbnail",
-        "slug"
+        "slug",
+        "featured"
     ];
 }

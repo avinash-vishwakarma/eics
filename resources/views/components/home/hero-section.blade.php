@@ -39,7 +39,7 @@
                                                         <a href="{{ route("about") }}" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn">
                                                             About Group
                                                         </a>
-                                                        <a href="" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn-2 white-border">
+                                                        <a href="{{ route("projects.featured") }}" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn-2 white-border">
                                                             View Projects
                                                             <span class="shape-img">
                                                                 <img src="{{ asset("img/arrow-shape.png") }}" alt="shape-img">
@@ -107,10 +107,10 @@
                                                     </h1>
 
                                                     <div class="hero-button">
-                                                        <a href="about.html" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn">
+                                                        <a href="{{ route("about") }}" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn">
                                                             Explore More
                                                         </a>
-                                                        <a href="about.html" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn-2 white-border">
+                                                        <a href="{{ route("services") }}" data-animation="fadeInUp" data-delay="1.7s" class="theme-btn-2 white-border">
                                                             Our Services
                                                             <span class="shape-img">
                                                                 <img src="{{asset("img/arrow-shape.png")}}" alt="shape-img">

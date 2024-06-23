@@ -17,15 +17,6 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="working-area float-bob-y">
-                                                <div class="inner">
-                                                    <div class="icon-box">
-                                                        <i class="fa-solid fa-medal"></i>
-                                                       <h3><span class="count">27</span> Years</h3>
-                                                       <p>Working Experience</p>
-                                                    </div>
-                                                </div>
-                                              </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-8 mt-5 mt-xl-0">

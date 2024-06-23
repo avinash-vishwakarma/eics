@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->boolean("featured")->default(false);
-            $table->string("thumbnail");
+            $table->string("thumbnail")->nullable();
             $table->string("title");
-            $table->string("shortDesc");
-            $table->text("description");
+            $table->text("shortDesc");
             $table->string("slug")->unique();
             $table->timestamps();
         });

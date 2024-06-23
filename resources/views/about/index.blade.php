@@ -7,7 +7,7 @@
     <x-includes.header/>
 
             <!--<< Breadcrumb Section Start >>-->
-            <div class="breadcrumb-wrapper bg-cover" style="background-image: url('{{ asset("img/hero/breadcrumb-bg.jpg") }}');">
+            <div class="breadcrumb-wrapper bg-cover" style="background-image: url('{{ asset("img/about/about us.jpg") }}');">
                 <div class="mask-shape">
                     <img src="{{ asset("img/mask-shape.png") }}" alt="shape-img">
                 </div>
@@ -38,10 +38,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-6 col-lg-6 wow fadeInUp" data-wow-delay=".3s">
                             <div class="about-image style-2">
-                                <img src="{{ asset("img/about/about-2.jpg") }}" alt="about-img">
-                                <h4 class="title-text">
-                                    25 Years Experieance
-                                </h4>
+                                <img src="{{ asset("img/about/about_section.jpg") }}" alt="about-img">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 mt-5 mt-lg-0">
@@ -77,7 +74,7 @@
                                     <li>EICS Consultancy Pvt. Ltd</li>
                                     <li>EICS International LLC</li>
                                 </ul>
-                                <a href="about.html" class="theme-btn-2 mt-5 wow fadeInUp" data-wow-delay=".9s">
+                                <a href="{{ asset("documents/EICS Technology PVT.LTD Company Profile.pdf") }}" class="theme-btn-2 mt-5 wow fadeInUp" data-wow-delay=".9s" download="EICS Technology PVT.LTD Company Profile.pdf">
                         DOWNLOAD COMPANY PROFILE 
                                 <span class="shape-img">
                                     <img src="{{ asset("img/arrow-shape.png") }}" alt="shape-img">
@@ -93,9 +90,7 @@
                                 </div>
                                 <div class="content">
                                     <h3>
-                                        <a href="service-details.html">
                                             Our Vision
-                                        </a>
                                     </h3>
                                     <p>
                                         To be the preferred turnkey projects solution provider in the Asia and Africa continent, in the selected niche areas of Infrastructure Projects such as Iron Steel and Power, with focus on improvements in Quality, productivity, environment and safety.
@@ -110,9 +105,7 @@
                                 </div>
                                 <div class="content">
                                     <h3>
-                                        <a href="service-details.html">
                                             OUR MISSION
-                                        </a>
                                     </h3>
                                     <p>
                                         To be a knowledge driven, innovative and ethical business unit, striving to provide “The State of The Art” Turnkey project solutions and technologies in Iron, Steel, Power and other related Projects targeted to improve aspects of Quality, Productivity, environment and safety, in Infrastructure Projects.
